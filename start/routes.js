@@ -19,9 +19,15 @@ const Route = use('Route')
 
 Route.get('/', () => '/login')
 
-// Auth Routes
-Route.group(() => {
-    Route.post('/register', 'AuthController.register')
-    Route.post('/login', 'AuthController.login')
-    Route.post('/logout', 'AuthController.logout')
-})
+// User related Routes
+Route.post('/users', 'UserController.create')
+Route.post('/sessions', 'SessionController.create')
+
+// Records related Routes
+Route.resource('records', 'RecordController')
+    .apiOnly()
+    .middleware('auth')
+
+// Records images related Routes
+Route.post('records/:id/images', 'ImageController.store').middleware('auth')
+Route.get('images/:path', 'ImageController.show')
