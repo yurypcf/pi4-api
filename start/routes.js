@@ -19,7 +19,7 @@ const Route = use('Route')
 
 Route.get('/', () => '/login')
 
-// User related Routes
+// Auth related Routes
 Route.post('/users', 'UserController.create')
 Route.post('/sessions', 'SessionController.create')
 
