@@ -37,7 +37,7 @@ class RecordController {
    */
   async store ({ request, auth, response }) {
     const { id } = auth.user
-    const data = request.only(['title', 'artist', 'genre', 'price'])
+    const data = request.only(['title', 'artist', 'genre', 'price', 'stock'])
 
     const record = await Record.create({ ...data, user_id: id }) 
 

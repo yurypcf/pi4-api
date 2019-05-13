@@ -15,7 +15,7 @@ class SaleSchema extends Schema {
         .onUpdate('CASCADE')
         .onDelete('CASCADE')
       table.decimal('total').notNullable()
-      table.enu('status', ['on_sale', 'processing', 'sold', 'canceled'])
+      table.string('status').notNullable()
       table.timestamps()
     })
   }
