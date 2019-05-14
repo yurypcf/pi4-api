@@ -31,3 +31,11 @@ Route.resource('records', 'RecordController')
 // Records images related Routes
 Route.post('records/:id/images', 'ImageController.store').middleware('auth')
 Route.get('images/:path', 'ImageController.show')
+
+// Sale related Routes
+Route.resource('sales', 'SaleController')
+    .apiOnly()
+    .middleware('auth')
+
+Route.post('sales/:id/record_sales', 'RecordSaleController.store').middleware('auth')
+Route.get('sales/:id/record_sales', 'RecordSaleController.index').middleware('auth')
