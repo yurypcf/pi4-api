@@ -7,7 +7,11 @@ class RecordSchema extends Schema {
   up () {
     this.create('records', (table) => {
       table.increments()
-      table.integer('user_id').unsigned().references('id').inTable('users')
+      table
+        .integer('user_id')
+        .unsigned()
+        .references('id')
+        .inTable('users')
       table.string('title').notNullable()
       table.string('artist').notNullable()
       table.string('genre').notNullable()
