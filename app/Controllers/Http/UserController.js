@@ -15,6 +15,28 @@ class UserController {
         }
         
     }
+
+    async index ({ auth }) {
+        const users = User.query()
+            .with('sales')
+            .fetch()
+
+        const { role } = auth.user
+        if (role !== 'admin') {
+            throw Error('You are not authorized')
+        } else {
+            return users
+        }
+    }
+
+    async show ({ auth }) {
+        const { id } = auth.user
+        const user = await User.findOrFail(id)
+
+        await user.load('sales')
+
+        return user
+    }
 }
 
 module.exports = UserController

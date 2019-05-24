@@ -14,7 +14,7 @@ class SaleSchema extends Schema {
         .inTable('users')
         .onUpdate('CASCADE')
         .onDelete('CASCADE')
-      table.integer('cep').notNullable()
+      table.string('cep').notNullable()
       table.decimal('shipping_value').notNullable()
       table.string('tracking_code').notNullable()
       table.decimal('total').notNullable()
